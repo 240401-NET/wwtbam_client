@@ -12,6 +12,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
   const [correct, setCorrect] = useState<boolean | null>(null)
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const modalRef = useRef<HTMLDialogElement>(null);
+  console.log(choice)
   useEffect(() => {
     if (currentQuestion) {
       const options = [

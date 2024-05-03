@@ -17,7 +17,7 @@ const Game = () => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [error, setError] = useState<[boolean, string]>([false, ""]);
   const [correctSelection, setCorrectSelection] = useState<boolean>(false);
-
+console.log(correctSelection)
   const navigate = useNavigate();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user")!);
