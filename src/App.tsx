@@ -11,7 +11,7 @@ import Game from "./pages/Game"
 function App() {
 
   return (
-    <Router>
+    <Router basename="https://240401-net.github.io/wwtbam_client/">
       <UserProvider>
       <Routes>
         <Route path="/login" element={<Login />} />

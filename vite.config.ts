@@ -21,7 +21,7 @@ export default defineConfig({
         } 
 
     }, 
-
+  base: "https://240401-net.github.io/wwtbam_client/",
   plugins: [react(), mkcert()], 
 
 }) 
