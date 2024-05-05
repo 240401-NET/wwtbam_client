@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Token } from "../types";
 
-const baseUrl = "/api/User";
+const baseUrl = "https://wwtbam.azurewebsites.net/api/User";
 
 export const signUp = async (
   Email: string,

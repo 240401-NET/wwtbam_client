@@ -21,7 +21,10 @@ export default defineConfig({
         } 
 
     }, 
-
   plugins: [react(), mkcert()], 
-
+  
+      build: {
+  
+          outDir: 'dist', 
+      }
 }) 
