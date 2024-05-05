@@ -89,4 +89,11 @@ export interface RoundValueProps {
 export interface QuestionContainerProps {
   currentQuestion: Question | null;
   updateQuestionNumber: (isCorrect: boolean) => void;
+  handleChoicesInfo: (choices: [string, boolean][]) => void;
+  incorrectOptions: string[];
+}
+
+export interface LifelinesProps {
+  score: number,
+  handleChosenLifeline: (lifeline: string) => void;
 }

@@ -5,14 +5,16 @@ import ConfirmModal from "../components/ConfirmModal";
 const QuestionContainer: React.FC<QuestionContainerProps> = ({
   currentQuestion,
   updateQuestionNumber,
+  handleChoicesInfo,
+  incorrectOptions
 }) => {
   const [choice, setChoice] = useState<string>("");
   const [selected, setSelected] = useState<boolean>(false);
   const [questionOptions, setQuestionOptions] = useState<string[]>([]);
   const [correct, setCorrect] = useState<boolean | null>(null)
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  
   const modalRef = useRef<HTMLDialogElement>(null);
-  console.log(choice)
   useEffect(() => {
     if (currentQuestion) {
       const options = [
@@ -21,8 +23,24 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
       ];
       shuffle(options);
       setQuestionOptions(options);
+    // console.log("Choices Info: ", choicesInfo)
+    // handleChoicesInfo(choicesInfo)
     }
   }, [currentQuestion]);
+  console.log("questionOptions: ", questionOptions)
+  console.log(choice)
+  useEffect(() => {
+    const correctAnswer = currentQuestion?.correctAnswer;
+    const newData: [string, boolean][] = [];
+    if (questionOptions.length) {
+      for (let i = 0; i < questionOptions.length; i++) {
+        const option: [string, boolean] = [letterChoices[i], questionOptions[i] === correctAnswer];
+        newData.push(option);
+      }
+      console.log("newData: ", newData)
+      return handleChoicesInfo(newData);
+    }
+  }, [ questionOptions, currentQuestion]);
 
   const letterChoices = ["A", "B", "C", "D"];
 
@@ -31,6 +49,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
 
   const handleAnswer = (option: string) => {
     console.log("Answer clicked");
+    
     setSelectedOption(option)
     setChoice(option);
     setSelected(true);
@@ -76,6 +95,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
             className={`justify-start cursor-pointer py-4 border-2 border-sky-400 rounded-xl flex items-center gap-x-8 px-16 text-xl font-bold tracking-wider 
             ${selectedOption === option && correct === true ? 'bg-green-500 text-white' : 
               selectedOption === option && correct === false ? 'bg-red-500 text-white' :
+              incorrectOptions.includes(option) ? 'bg-red-500 text-white disabled:cursor-not-allowed' :
               'hover:bg-amber-500 hover:text-white text-amber-500'}`}
             key={index}
             onClick={() => handleAnswer(option)}

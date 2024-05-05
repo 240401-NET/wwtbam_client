@@ -3,11 +3,13 @@ import ingameBackdrop from "../assets/gamebackdrop.webp";
 import GameInfoSidebar from "../components/GameInfoSidebar";
 import Lifelines from "../components/Lifelines";
 import QuestionContainer from "./QuestionContainer";
-import { getQuestions, submitGame } from "../api/gameService";
+import { getQuestions, handleFiftyFifty, submitGame } from "../api/gameService";
 
 import { Question } from "../types";
 import { useNavigate } from "react-router-dom";
 import Toast from "../components/Toast";
+import { distributeWeight } from "../helpers";
+import AudienceGraph from "../components/AudienceGraph";
 
 const Game = () => {
   const [quiz, setQuiz] = useState<Question[]>([]);
@@ -17,7 +19,16 @@ const Game = () => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [error, setError] = useState<[boolean, string]>([false, ""]);
   const [correctSelection, setCorrectSelection] = useState<boolean>(false);
-console.log(correctSelection)
+  const [incorrectOptions, setIncorrectOptions] = useState<string[]>([]);
+  const [updatedIncorrect, setUpdatedIncorrect] = useState<string[]>([]);
+  const [chosenLifeline, setChosenLifeline] = useState<string>("");
+  const [options, setOptions] = useState<[string, boolean][]>([]);
+  const [audienceData, setAudienceData] = useState<
+    Array<{ name: string; value: number }>
+  >([]);
+  console.log(correctSelection);
+  console.log(chosenLifeline);
+
   const navigate = useNavigate();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user")!);
@@ -37,7 +48,9 @@ console.log(correctSelection)
         const hardData = await getQuestions("hard");
         const combined = [...easyData, ...mediumData, ...hardData];
         setQuiz(combined);
+
         setCurrentQuestion(combined[0]);
+        setIncorrectOptions(combined[0]?.incorrectAnswers || []);
         localStorage.setItem("activeGame", "true");
         setError([false, ""]);
       } catch (error) {
@@ -50,16 +63,26 @@ console.log(correctSelection)
       localStorage.removeItem("activeGame");
     };
   }, []);
-
+  console.log("quiz: ", quiz);
   useEffect(() => {
     if (quiz.length > 0 && questionNumber < quiz.length) {
-      setCurrentQuestion(quiz[questionNumber]);
+      const newQuestion = quiz[questionNumber];
+      setCurrentQuestion(newQuestion);
+      setIncorrectOptions(newQuestion.incorrectAnswers || []);
+      console.log(currentQuestion);
+      console.log(incorrectOptions);
     } else if (quiz.length > 0 && questionNumber >= quiz.length) {
       endGame();
     }
   }, [quiz, questionNumber]);
 
   const updateQuestionNumber = (isCorrect: boolean) => {
+    if (audienceData) {
+      setAudienceData([]);
+    }
+    if (updatedIncorrect.length > 0) {
+      setUpdatedIncorrect([]);
+    }
     if (isCorrect) {
       setCorrectSelection(true);
       setQuestionNumber((prev) => prev + 1);
@@ -69,8 +92,46 @@ console.log(correctSelection)
     }
   };
 
+  const handleChosenLifeline = (lifeline: string) => {
+    setChosenLifeline(lifeline); //whatever the case is in lifeline will be returned
+    switch (lifeline) {
+      case "fiftyFifty": {
+        const optionsToModify = [...incorrectOptions];
+        const modifiedOptions = handleFiftyFifty(optionsToModify);
+        setUpdatedIncorrect(modifiedOptions);
+        console.log("updatedIncorrect: ", updatedIncorrect);
+        break;
+      }
+      case "audience": {
+        updateAudienceData();
+        break;
+      }
+      // case "phoneAFriend":
+      //   handlePhoneAFriend(incorrectOptions);
+      //   break;
+      // default:
+      //   break;
+    }
+  };
   const updateScore = (amount: number) => {
     setScore(amount);
+  };
+
+  const handleChoicesInfo = (choices: [string, boolean][]) => {
+    setOptions(choices);
+  };
+
+  //attaches the randomized letter to the option and whether or not it's the answer ex: ['A', true]
+  const updateAudienceData = () => {
+    const question = questionNumber + 1;
+    const newAudienceData = distributeWeight(options, question);
+    console.log("newAudienceData: ", newAudienceData);
+    console.log("type: ", typeof newAudienceData);
+    const data = Object.entries(newAudienceData).map(([name, count]) => ({
+      name,
+      value: count,
+    }));
+    setAudienceData(data);
   };
 
   const resetQuiz = () => {
@@ -87,8 +148,6 @@ console.log(correctSelection)
     console.log("Game Over!");
   };
 
-
-  //TODO: Pass props to sidebar
   const toastMessage = error[1];
   return (
     <div
@@ -96,13 +155,23 @@ console.log(correctSelection)
       style={{ backgroundImage: `url(${ingameBackdrop})` }}
     >
       <div className="bg-black bg-opacity-50 h-full w-full flex flex-col justify-end">
-        <div className={`flex ${error[0] === true ? 'justify-center' : 'justify-between'} items-center w-full`}>
-          <Lifelines score={score} />
+        <div
+          className={`flex ${
+            error[0] === true ? "justify-center" : "justify-between"
+          } items-center w-full`}
+        >
+          <Lifelines
+            score={score}
+            handleChosenLifeline={handleChosenLifeline}
+          />
           {error[0] && (
             <div className="flex-1 flex justify-center">
               <Toast toastMessage={toastMessage} color="error" />
             </div>
           )}
+          {audienceData.length > 0 ? (
+            <AudienceGraph data={audienceData} />
+          ) : null}
           <GameInfoSidebar
             roundNumber={questionNumber + 1}
             updateScore={updateScore}
@@ -111,6 +180,8 @@ console.log(correctSelection)
         <QuestionContainer
           currentQuestion={currentQuestion}
           updateQuestionNumber={updateQuestionNumber}
+          handleChoicesInfo={handleChoicesInfo}
+          incorrectOptions={updatedIncorrect}
         />
       </div>
     </div>
