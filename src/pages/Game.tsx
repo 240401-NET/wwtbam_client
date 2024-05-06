@@ -185,7 +185,10 @@ const Game = () => {
             handleChosenLifeline={handleChosenLifeline}
           />
           {completedGame ? (
+            <>
           <DisplayConfetti />
+          <div className="w-full text-white text-4xl text-center">CONGRATULATIONS!!</div>
+          </>
         ) : (
           null
         )}
