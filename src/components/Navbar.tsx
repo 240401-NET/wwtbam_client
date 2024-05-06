@@ -2,6 +2,7 @@ import { FaRegCircleUser } from "react-icons/fa6";
 // import { useEffect } from 'react';
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //if authenticated -> view profile icon + logout
 //if not authenticated -> login + signup
 // useEffect(() => {
@@ -12,6 +13,7 @@ import { Link } from "react-router-dom";
 // })
 const Navbar = () => {
   const { isLoggedIn, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="sticky top-0 fixed mt-6">
@@ -32,9 +34,10 @@ const Navbar = () => {
                   <a>Logout</a>
                 </button>
                 <div className="flex justify-center items-center pr-7 pl-6 hover:scale-110">
-                  <Link to="/profile">
+                  <button onClick={() => navigate("/profile")}>
                     <FaRegCircleUser className="text-4xl text-white" />
-                  </Link>
+                  </button>
+
                 </div>
               </>
             ) : (

@@ -14,7 +14,7 @@ const SignUpForm: React.FC<SignUpFormProps> = () => {
   });
 
   useEffect(() => {
-    setFormData((prev) => ({ ...prev, Name: `${first}` + `${last}` }));
+    setFormData((prev) => ({ ...prev, Name: `${first} ` + `${last}` }));
   }, [first, last]);
 
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
