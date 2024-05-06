@@ -32,7 +32,9 @@ const Navbar = () => {
                   <a>Logout</a>
                 </button>
                 <div className="flex justify-center items-center pr-7 pl-6 hover:scale-110">
-                  <FaRegCircleUser className="text-4xl text-white" />
+                  <Link to="/profile">
+                    <FaRegCircleUser className="text-4xl text-white" />
+                  </Link>
                 </div>
               </>
             ) : (
