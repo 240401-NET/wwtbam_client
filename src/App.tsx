@@ -6,6 +6,7 @@ import Home from "./pages/Home"
 import Leaderboard from "./pages/Leaderboard"
 import { UserProvider } from "./context/AuthContext"
 import Game from "./pages/Game"
+import ProfilePage from "./pages/ProfilePage"
 // import AuthContext from "./context/AuthContext"
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path="/game" element={<Game />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/profile" element={<ProfilePage />} />
         {/* <Route path="/auth" element={<AuthContext />} /> */}
       </Routes>
       </UserProvider>
