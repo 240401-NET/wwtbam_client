@@ -67,6 +67,7 @@ const Lifelines: React.FC<LifelinesProps> = ({
             <ImCross className="text-red-500 text-8xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
           </div>
         )}
+        
         {!usedAudience ? (
           <button
             className={buttonClass}

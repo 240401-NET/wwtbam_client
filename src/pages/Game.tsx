@@ -11,6 +11,7 @@ import Toast from "../components/Toast";
 import { distributeWeight } from "../helpers";
 import AudienceGraph from "../components/AudienceGraph";
 import ChatBubble from "../components/ChatBubble";
+import DisplayConfetti from "../components/Confetti";
 
 const Game = () => {
   const [quiz, setQuiz] = useState<Question[]>([]);
@@ -26,6 +27,7 @@ const Game = () => {
   const [usedPhoneAFriend, setUsedPhoneAFriend] = useState<boolean>(false);
   const [correct, setCorrect] = useState<string>("");
   const [options, setOptions] = useState<[string, boolean][]>([]);
+  const [completedGame, setCompletedGame] = useState< boolean>();
   const [audienceData, setAudienceData] = useState<
     Array<{ name: string; value: number }>
   >([]);
@@ -88,6 +90,9 @@ const Game = () => {
     }
     if (usedPhoneAFriend) {
       setUsedPhoneAFriend(false);
+    }
+    if (isCorrect && questionNumber === quiz.length) {
+      setCompletedGame(true);
     }
 
     if (isCorrect) {
@@ -153,6 +158,7 @@ const Game = () => {
     setQuestionNumber(0);
     setScore(0);
     setCurrentQuestion(null);
+    setCompletedGame(false);
   };
 
   const endGame = () => {
@@ -178,6 +184,14 @@ const Game = () => {
             score={score}
             handleChosenLifeline={handleChosenLifeline}
           />
+          {completedGame ? (
+            <>
+          <DisplayConfetti />
+          <div className="w-full text-white text-4xl text-center">CONGRATULATIONS!!</div>
+          </>
+        ) : (
+          null
+        )}
           {error[0] && (
             <div className="flex-1 flex justify-center">
               <Toast toastMessage={toastMessage} color="error" />
