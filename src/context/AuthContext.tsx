@@ -49,7 +49,7 @@ export const UserProvider = ({ children }: Props) => {
         localStorage.setItem("user", JSON.stringify(user));
         setToken(res?.data.token);
         setUser(userObj!);
-        navigate("/");
+        navigate("/login");
       })
       .catch((e) => console.error(e));
   };

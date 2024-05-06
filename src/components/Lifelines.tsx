@@ -64,7 +64,7 @@ const Lifelines: React.FC<LifelinesProps> = ({
             <button className={buttonClass} disabled={usedFiftyFifty}>
               <p className="text-white  text-3xl font-bold">50/50</p>
             </button>
-            <ImCross className="text-red-500 text-8xl absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2" />
+            <ImCross className="text-red-500 text-8xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
           </div>
         )}
         {!usedAudience ? (
@@ -79,7 +79,7 @@ const Lifelines: React.FC<LifelinesProps> = ({
             <button className={buttonClass} disabled={usedAudience}>
               <FaUsers className="text-white text-6xl" />
             </button>
-            <ImCross className="text-red-500 text-8xl absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2" />
+            <ImCross className="text-red-500 text-8xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
           </div>
         )}
         {!usedPhoneAFriend ? (
@@ -94,7 +94,7 @@ const Lifelines: React.FC<LifelinesProps> = ({
             <button className={buttonClass} disabled={usedPhoneAFriend}>
               <FaPhoneVolume className="text-white text-6xl" />
             </button>
-            <ImCross className="text-red-500 text-8xl absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2" />
+            <ImCross className="text-red-500 text-8xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
           </div>
         )}
       </div>

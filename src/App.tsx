@@ -11,7 +11,7 @@ import Game from "./pages/Game"
 function App() {
 
   return (
-    <Router>
+    <Router >
       <UserProvider>
       <Routes>
         <Route path="/login" element={<Login />} />

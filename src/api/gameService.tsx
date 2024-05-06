@@ -7,7 +7,6 @@ const baseUrl = "https://wwtbam.azurewebsites.net/api/Game";
 export const getQuestions = async (difficulty: string) => {
   const response = await axios.get(
     "https://the-trivia-api.com/api/questions",
-
     {
       params: {
         limit: 5,
@@ -15,13 +14,16 @@ export const getQuestions = async (difficulty: string) => {
       },
     }
   );
+  console.log("RES ", response.data)
   const data = response.data;
   return data;
 };
 
 export const submitGame = async (UserId: string, Score: number) => {
+  console.log("UserId: ", UserId)
+  console.log("Score: ", Score)
   try {
-    const data = await axios.post<GameProps>(
+    const response = await axios.post<GameProps>(
       baseUrl,
       {
         UserId: UserId,
@@ -35,10 +37,13 @@ export const submitGame = async (UserId: string, Score: number) => {
         },
       }
     );
-    return data;
+    console.log("RES ", response.data)
+
+    return response.data;
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
       const errMessage = error.response?.data.message;
+      console.log(errMessage)
       throw new Error(errMessage);
     } else {
       throw new Error("An unexpected error occurred");
