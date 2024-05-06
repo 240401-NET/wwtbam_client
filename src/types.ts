@@ -77,9 +77,8 @@ export interface ModalProps {
 } 
 
 export interface GameProps { 
-  score?: number; 
-  playedAt?: Date; 
-  userId: string; 
+  Score?: number; 
+  UserId: string; 
 } 
 
 export interface RoundValueProps { 
@@ -96,4 +95,8 @@ export interface QuestionContainerProps {
 export interface LifelinesProps {
   score: number,
   handleChosenLifeline: (lifeline: string) => void;
+}
+
+export interface ChatBubbleProps {
+  correct: string;
 }

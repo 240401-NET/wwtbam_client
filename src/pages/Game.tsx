@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Toast from "../components/Toast";
 import { distributeWeight } from "../helpers";
 import AudienceGraph from "../components/AudienceGraph";
+import ChatBubble from "../components/ChatBubble";
 
 const Game = () => {
   const [quiz, setQuiz] = useState<Question[]>([]);
@@ -22,6 +23,8 @@ const Game = () => {
   const [incorrectOptions, setIncorrectOptions] = useState<string[]>([]);
   const [updatedIncorrect, setUpdatedIncorrect] = useState<string[]>([]);
   const [chosenLifeline, setChosenLifeline] = useState<string>("");
+  const [usedPhoneAFriend, setUsedPhoneAFriend] = useState<boolean>(false);
+  const [correct, setCorrect] = useState<string>("");
   const [options, setOptions] = useState<[string, boolean][]>([]);
   const [audienceData, setAudienceData] = useState<
     Array<{ name: string; value: number }>
@@ -83,7 +86,12 @@ const Game = () => {
     if (updatedIncorrect.length > 0) {
       setUpdatedIncorrect([]);
     }
+    if (usedPhoneAFriend) {
+      setUsedPhoneAFriend(false);
+    }
+
     if (isCorrect) {
+
       setCorrectSelection(true);
       setQuestionNumber((prev) => prev + 1);
     } else {
@@ -91,6 +99,12 @@ const Game = () => {
       setQuestionNumber(quiz.length);
     }
   };
+
+  const handlePhoneAFriend = () => {
+    const correct = currentQuestion?.correctAnswer;
+    setCorrect(correct!);
+    setUsedPhoneAFriend(true);
+  }
 
   const handleChosenLifeline = (lifeline: string) => {
     setChosenLifeline(lifeline); //whatever the case is in lifeline will be returned
@@ -106,11 +120,11 @@ const Game = () => {
         updateAudienceData();
         break;
       }
-      // case "phoneAFriend":
-      //   handlePhoneAFriend(incorrectOptions);
-      //   break;
-      // default:
-      //   break;
+      case "phoneAFriend":
+        handlePhoneAFriend();
+        break;
+      default:
+        break;
     }
   };
   const updateScore = (amount: number) => {
@@ -169,9 +183,19 @@ const Game = () => {
               <Toast toastMessage={toastMessage} color="error" />
             </div>
           )}
+          {usedPhoneAFriend === true && (
+            <div className="">
+              <ChatBubble correct={correct} />
+            </div>
+          )}
           {audienceData.length > 0 ? (
             <AudienceGraph data={audienceData} />
           ) : null}
+          {error[0] && (
+            <div className="flex-1 flex justify-center">
+              <Toast toastMessage={toastMessage} color="error" />
+            </div>
+          )}
           <GameInfoSidebar
             roundNumber={questionNumber + 1}
             updateScore={updateScore}

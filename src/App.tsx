@@ -12,7 +12,7 @@ import ProfilePage from "./pages/ProfilePage"
 function App() {
 
   return (
-    <Router>
+    <Router >
       <UserProvider>
       <Routes>
         <Route path="/login" element={<Login />} />
