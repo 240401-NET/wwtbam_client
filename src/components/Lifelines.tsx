@@ -88,7 +88,7 @@ const Lifelines: React.FC<LifelinesProps> = ({
             className={buttonClass}
             onClick={() => handleLifelineUsage("phoneAFriend")}
           >
-            <FaUsers className="text-white text-6xl" />
+            <FaPhoneVolume className="text-white text-6xl" />
           </button>
         ) : (
           <div className="relative">
