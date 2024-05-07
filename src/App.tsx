@@ -7,6 +7,7 @@ import Leaderboard from "./pages/Leaderboard"
 import { UserProvider } from "./context/AuthContext"
 import Game from "./pages/Game"
 import ProfilePage from "./pages/ProfilePage"
+import HowToPlay from "./pages/HowToPlay"
 // import AuthContext from "./context/AuthContext"
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/profile" element={<ProfilePage />} />
         {/* <Route path="/auth" element={<AuthContext />} /> */}
+        <Route path ="/howtoplay" element ={<HowToPlay />}/>
       </Routes>
       </UserProvider>
     </Router>
