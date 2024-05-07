@@ -7,9 +7,9 @@ const HowToPlay = () =>{
 
     const buttonClass =
     "border border-8 border-sky-400 rounded-full bg-black p-4 flex items-center text-4xl w-32 h-32 justify-center hover:scale-110 hover:border-white hover:bg-sky-400 hover:border-8 hover:ease-in-out hover:cursor-pointer";
+   
 
     
-
 
     return (
         
@@ -37,7 +37,7 @@ const HowToPlay = () =>{
                         <div className = "col-span-1">
                             <Link to="/signup">
                                 <h1 className="text-xl hover:scale-110">
-                                    <a>Sign Up</a>
+                                    <a title = "signe ">Sign Up</a>
                                 </h1>
                             </Link>
                         </div>
@@ -58,7 +58,7 @@ const HowToPlay = () =>{
                         </div>
                     
                         <div className = "col-span-1">
-                            <button className={buttonClass}>
+                            <button className={buttonClass} title="Eliminates two posible answers">
                             <p className="text-white  text-3xl font-bold">50/50</p>
                             </button>   
                         </div>
@@ -67,13 +67,13 @@ const HowToPlay = () =>{
                          <h1>THE 50/50 LIFE LINE</h1>
                          <p>Are you stuck bewteen a few choices and not sure which one to pick? 
                             well let us eliminate half the choices for you. The 50/50 life line eliminates
-                            two posible answere giving you a 50/50 chance to get the correct answer!
+                            two posible answers giving you a 50/50 chance to get the correct answer!
                          </p>
                         </div>
 
                         <div className = "col-span-1">
-                            <button className={buttonClass}>
-                            <FaUsers className="text-white text-6xl" />
+                            <button className=  {buttonClass} title="A bar graph appears that represents the collected choices from the audience." >
+                            <FaUsers className="text-white text-6xl  " />
                             </button>   
                         </div>
                     
@@ -86,7 +86,7 @@ const HowToPlay = () =>{
                         </div>
 
                         <div className = "col-span-1">
-                            <button className={buttonClass}>
+                            <button className={buttonClass} title="The Call a Friend Lifeline suggest an answer for you">
                             <FaPhoneVolume className="text-white text-6xl" />
                             </button>   
                         </div>
