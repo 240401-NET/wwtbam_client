@@ -34,10 +34,10 @@ const HowToPlay = () =>{
                                 If you already signed up, All you need to do is login, then click start game. </p>
                         </div>
                     
-                        <div className = "col-span-1">
+                        <div className = "col-span-1 .place-items-center">
                             <Link to="/signup">
-                                <h1 className="text-xl hover:scale-110">
-                                    <a title = "signe ">Sign Up</a>
+                                <h1 className="text-xl hover:scale-110 p-50">
+                                    <a>Sign Up</a>
                                 </h1>
                             </Link>
                         </div>
