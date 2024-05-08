@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SignUpFormProps } from "../../types";
 import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const SignUpForm: React.FC<SignUpFormProps> = () => {
   const { register } = useAuth();
@@ -106,9 +107,9 @@ const SignUpForm: React.FC<SignUpFormProps> = () => {
       </div>
       <p className="text-yellow-800 ">
         Already have an account?{" "}
-        <a href="/login" className="text-yellow-700 font-semibold">
+        <Link to="/login" className="text-yellow-700 font-semibold">
           Login
-        </a>
+        </Link>
       </p>
       <div className="flex justify-center">
         <button
