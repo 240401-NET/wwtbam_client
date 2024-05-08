@@ -1,4 +1,3 @@
-import logo from '../assets/logo.png';
 import formbg from '../assets/formbg.jpg';
 import Navbar from '../components/Navbar';
 import { useAuth } from "../context/AuthContext";
