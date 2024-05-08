@@ -53,7 +53,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
     setSelectedOption(option)
     setChoice(option);
     setSelected(true);
-    showModal();
+    setTimeout(showModal, 0);
   };
   const shuffle = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {

@@ -22,7 +22,6 @@ function App() {
         <Route path="/game" element={<Game />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/profile" element={<ProfilePage />} />
-        {/* <Route path="/auth" element={<AuthContext />} /> */}
         <Route path ="/howtoplay" element ={<HowToPlay />}/>
       </Routes>
       </UserProvider>
