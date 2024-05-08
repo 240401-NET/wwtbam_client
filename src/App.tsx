@@ -23,6 +23,7 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path ="/howtoplay" element ={<HowToPlay />}/>
+        <Route path="*" element={<Home />} />
       </Routes>
       </UserProvider>
     </Router>
