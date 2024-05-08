@@ -1,4 +1,6 @@
 import { FaRegCircleUser } from "react-icons/fa6";
+import icon from '../assets/icon.png'
+
 // import { useEffect } from 'react';
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -18,9 +20,9 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 fixed mt-6">
       <div className="navbar bg-transparent text-white font-serif">
-        <div className="flex-1">
-          <a href="/" className="btn btn-ghost text-xl">
-            Home
+        <div className="flex-1 justify-center items-center pl-8">
+          <a href="/" className="btn btn-ghost text-xl hover:cursor-pointer ">
+            <img src={icon} width={100} height={100}/>
           </a>
         </div>
         <div className="flex justify-end w-full">
@@ -30,6 +32,11 @@ const Navbar = () => {
                 <div className="flex justify-center items-center">
                   <button className=""></button>
                 </div>
+                <Link to="/howtoplay">
+                  <li className="text-xl hover:scale-110  ">
+                    <a>Instructions</a>
+                  </li>
+                </Link>
                 <button className="text-xl hover:scale-110" onClick={logout}>
                   <a>Logout</a>
                 </button>

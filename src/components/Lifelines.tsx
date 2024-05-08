@@ -17,7 +17,7 @@ const Lifelines: React.FC<LifelinesProps> = ({
     const user = localStorage.getItem("user");
     const name = JSON.parse(user!).userName;
     setUserName(name);
-  });
+  }, []);
 
   const buttonClass =
     "border border-8 border-sky-400 rounded-full bg-black p-4 flex items-center text-4xl w-32 h-32 justify-center hover:scale-110 hover:border-white hover:bg-sky-400 hover:border-8 hover:ease-in-out hover:cursor-pointer";

@@ -15,14 +15,14 @@ const HowToPlay = () =>{
         
         <div className="bg-fixed bg-cover bg-center bg-no-repeat  " style={{ backgroundImage: `url(${HTPBG})` }}>
                 <Navbar></Navbar>
-                <div className = "bg-black p-5 bg-opacity-60">  
+                <div className = " p-5 bg-opacity-60">  
                 
                 <div className = "font-extrabold text-6xl text-center text-yellow-400 ">WHO WANTS TO BE A MILLIONAIRE !!!</div>
                 <div className = "font-extrabold text-4xl text-center text-yellow-400 ">HOW TO PLAY</div>
                 </div>
             
             
-                <div className ="w-1/2 p-4 mx-auto  text-white text-center border bg-black bg-opacity-70 md:bg-opacity-70">
+                <div className ="w-1/2 p-4 mx-auto  text-white text-center border border-2 border-sky-400 rounded-lg bg-black bg-opacity-70 md:bg-opacity-70">
                     <div className="container m-auto grid grid-cols-3 gap-4 text ">
                         
                         <div className = "col-span-3">
@@ -30,20 +30,20 @@ const HowToPlay = () =>{
                         </div>
                         
                         <div className = "col-span-2">
-                            <p className = "text-2xl text-font-sans">The first thing we need to do is sign up, This will be used to track scores.
+                            <p className = "text-2xl text-font-sans text-start">The first thing we need to do is sign up, This will be used to track scores.
                                 If you already signed up, All you need to do is login, then click start game. </p>
                         </div>
                     
-                        <div className = "col-span-1 .place-items-center">
+                        <div className = "col-span-1 place-items-center items-center pt-4">
                             <Link to="/signup">
-                                <h1 className="text-xl hover:scale-110 p-50">
+                                <h1 className="text-xl hover:scale-110 p-50 bg-sky-400 w-24 mx-auto py-2 rounded-lg text-bold items-center ">
                                     <a>Sign Up</a>
                                 </h1>
                             </Link>
                         </div>
                     
                         <div className ="col-span-3">
-                            <p className = "text-2xl text-font-sans">The objective of the game is quite simple. You will be presented with a question 
+                            <p className = "text-2xl text-font-sans text-start">The objective of the game is quite simple. You will be presented with a question 
                                 and you need to answer the question correctly to proceed to the next level.
                                 Simply click your answer(you might have to click twice) and when the promt 
                                 "Is that your final answer?" appears submit your final answer.
@@ -54,7 +54,7 @@ const HowToPlay = () =>{
                         </div>
 
                         <div className = "col-span-3">
-                            <h1 className = "text-3xl"> Life Lines </h1>
+                            <h1 className = "text-3xl text-yellow-400 font-bold"> Life Lines </h1>
                         </div>
                     
                         <div className = "col-span-1">
@@ -64,7 +64,7 @@ const HowToPlay = () =>{
                         </div>
                     
                         <div className = "col-span-2">
-                         <h1>THE 50/50 LIFE LINE</h1>
+                         <h1 className='font-bold text-lg'>THE 50/50 LIFE LINE</h1>
                          <p>Are you stuck bewteen a few choices and not sure which one to pick? 
                             well let us eliminate half the choices for you. The 50/50 life line eliminates
                             two posible answers giving you a 50/50 chance to get the correct answer!
@@ -78,7 +78,7 @@ const HowToPlay = () =>{
                         </div>
                     
                         <div className = "col-span-2">
-                         <h1>ASK THE AUDIENCE LIFE LINE</h1>
+                         <h1 className='font-bold text-lg'>ASK THE AUDIENCE LIFE LINE</h1>
                          <p>If you dont know the answer, maybe the audience does. The ask the
                             audience life line alows you to ask the audience. When you click 
                             on this icon a bar graph appears that represents the collected choices from the audience.
@@ -92,7 +92,7 @@ const HowToPlay = () =>{
                         </div>
                     
                         <div className = "col-span-2">
-                         <h1>CALL A FRIEND LIFELINE</h1>
+                         <h1 className='font-bold text-lg'>CALL A FRIEND LIFELINE</h1>
                          <p>Having a hard time, and dont have any friends to call!? 
                             Don't Worry we got you covered! The Call a Friend Lifeline 
                             Suggest an answer for you, and out friend suggesting the answer is pretty smart.

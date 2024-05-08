@@ -11,7 +11,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = (props: ChatBubbleProps) => {
           "I think the answer is {correct}, but I'm not sure. "
         </div>
       </div>
-      </div>
+      </div> 
     </>
   );
 };
