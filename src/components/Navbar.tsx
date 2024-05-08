@@ -49,6 +49,11 @@ const Navbar = () => {
               </>
             ) : (
               <>
+              <Link to="/howtoplay">
+                  <li className="text-xl hover:scale-110  ">
+                    <a>Instructions</a>
+                  </li>
+                </Link>
                 <Link to="/login">
                   <li className="text-xl hover:scale-110">
                     <a>Login</a>
