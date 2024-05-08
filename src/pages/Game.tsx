@@ -92,6 +92,7 @@ const Game = () => {
       setUsedPhoneAFriend(false);
     }
     if (isCorrect && questionNumber === quiz.length) {
+      setScore(1000000)
       setCompletedGame(true);
     }
 
