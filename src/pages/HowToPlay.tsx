@@ -13,7 +13,7 @@ const HowToPlay = () =>{
 
     return (
         
-        <div className="bg-fixed bg-cover bg-center bg-no-repeat  " style={{ backgroundImage: `url(${HTPBG})` }}>
+        <div className="bg-fixed bg-cover bg-center bg-no-repeat  h-screen w-full" style={{ backgroundImage: `url(${HTPBG})` }}>
                 <Navbar></Navbar>
                 <div className = " p-5 bg-opacity-60">  
                 
