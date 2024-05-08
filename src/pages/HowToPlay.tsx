@@ -13,7 +13,7 @@ const HowToPlay = () =>{
 
     return (
         
-        <div className="bg-cover bg-center bg-no-repeat h-[100vh] w-full fixed" style={{ backgroundImage: `url(${HTPBG})` }}>
+        <div className="bg-cover bg-center bg-no-repeat h-[100vh] w-full fixed scr" style={{ backgroundImage: `url(${HTPBG})` }}>
                 <Navbar></Navbar>
                 <div className = " p-5 bg-opacity-60">  
                 
@@ -22,7 +22,7 @@ const HowToPlay = () =>{
                 </div>
             
             
-                <div className ="w-1/2 p-4 mx-auto  text-white text-center border border-2 border-sky-400 rounded-lg bg-black bg-opacity-70 md:bg-opacity-70">
+                <div className ="w-1/2 p-4 mx-auto text-white text-center border border-4 border-sky-400 rounded-lg bg-black bg-opacity-70 md:bg-opacity-70 overflow-y-scroll" style={{ maxHeight: '60vh' }}>
                     <div className="container m-auto grid grid-cols-3 gap-4 text ">
                         
                         <div className = "col-span-3">
