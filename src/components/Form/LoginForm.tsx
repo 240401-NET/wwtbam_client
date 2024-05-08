@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LoginFormProps } from "../../types";
 import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 // import { ErrorMessageContext } from "../../context/AuthContext";
 // import AuthContext from '../../context/AuthContext'
 // import { signIn } from "../../api/userService";
@@ -59,7 +60,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
             className={formInputClass}
           />
         </div>
-        <p className='text-yellow-800 '>Don't have an account?  <a href='/signup' className='text-yellow-700 font-semibold'>Signup</a></p>
+        <p className='text-yellow-800 '>Don't have an account?  <Link to="/signup" className='text-yellow-700 font-semibold'>Signup</Link></p>
         <div className='flex justify-center'>
           <button className='bg-sky-800 text-lg uppercase text-white  font-bold w-48 my-4 rounded-xl p-2 font-sans hover:scale-110 hover:bg-sky-600'>Submit</button>
         </div>
